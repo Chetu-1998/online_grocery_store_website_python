@@ -1,0 +1,36 @@
+{%extends "homepage.html"%}
+
+
+{%block content%}
+<center>
+<h1>Grocery Details</h1>
+<form method="post" action="/addToCart">
+  {%csrf_token%}
+<table class="table">
+    <tr><td>Name: </td>
+      <td>{{grocery.pname}}</td></tr>
+    <tr><td>Price: </td>
+      <td>{{grocery.price}}</td></tr>
+    <tr><td>Description: </td>
+            <td>{{grocery.description}}</td></tr>
+    <tr><td>Size: </td>
+    <td>{{grocery.size}}</td></tr>
+       
+    <tr><td colspan="2" align="center"><img src="{{grocery.image.url}}" height="300px" width="300px"/></td></tr>
+    <tr><td>Quantity</td>   
+      <td><select name="qty" class="form-control">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select></td></tr>
+    <tr><td>
+      <button type="submit" class="btn btn-success">Add to Cart</button>
+    </td></tr> 
+      <input type="hidden" name="groceryid" value="{{grocery.id}}"/>
+    </td></tr> 
+  </table>
+</form>
+</center>
+{%endblock%}
